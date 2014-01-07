@@ -1,12 +1,9 @@
-# == Class gor::service
+# == Class: gor::service
 #
-# This class is meant to be called from gor
-# It ensure the service is running
+# Private class. Should not be called directly.
 #
 class gor::service {
-  include gor::params
-
-  service { $gor::params::service_name:
+  service { 'gor':
     ensure     => running,
     enable     => true,
     hasstatus  => true,

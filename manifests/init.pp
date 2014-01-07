@@ -1,24 +1,31 @@
 # == Class: gor
 #
-# Full description of class gor here.
+# Run an instance of Gor for traffic replay.
 #
 # === Parameters
 #
-# [*sample_parameter*]
-#   Explanation of what this parameter affects and what it defaults to.
+# [*args*]
+#   Hash of arguments to run Gor with. Values will be single quoted.
+#
+# [*package_ensure*]
+#   Ensure parameter to pass to the package.
+#   Default: present
 #
 class gor (
-) inherits gor::params {
-
-  # validate parameters here
+  $args,
+  $package_ensure = present,
+) {
+  validate_hash($args)
+  if empty($args) {
+    fail("${title}: args param is empty")
+  }
 
   anchor { 'gor::begin': } ->
-  class { 'gor::install': } ->
-  class { 'gor::config': }
+  class { 'gor::package': } ->
+  class { 'gor::config': } ~>
   class { 'gor::service': } ->
   anchor { 'gor::end': }
 
   Anchor['gor::begin']  ~> Class['gor::service']
-  Class['gor::install'] ~> Class['gor::service']
-  Class['gor::config']  ~> Class['gor::service']
+  Class['gor::package'] ~> Class['gor::service']
 }

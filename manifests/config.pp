@@ -1,6 +1,11 @@
-# == Class gor::config
+# == Class: gor::config
 #
-# This class is called from gor
+# Private class. Should not be called directly.
 #
 class gor::config {
+  $args = $::gor::args
+
+  file { '/etc/init/gor':
+    content => template('gor/etc/init/gor.conf.erb'),
+  }
 }
