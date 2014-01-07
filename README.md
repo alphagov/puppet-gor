@@ -1,6 +1,6 @@
 # gor
 
-Puppet module for gor.
+Puppet module for [Gor](https://github.com/buger/gor/).
 
 ## Example usage
 
