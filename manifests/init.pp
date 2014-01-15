@@ -11,9 +11,14 @@
 #   Ensure parameter to pass to the package.
 #   Default: present
 #
+# [*service_ensure*]
+#   Ensure parameter to pass to the service.
+#   Default: running
+#
 class gor (
   $args,
   $package_ensure = present,
+  $service_ensure = running,
 ) {
   validate_hash($args)
   if empty($args) {

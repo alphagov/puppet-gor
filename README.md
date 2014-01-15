@@ -26,6 +26,14 @@ class { 'gor':
 }
 ```
 
+To prevent the service from starting:
+```puppet
+class { 'gor':
+  service_ensure => 'stopped',
+  …
+}
+```
+
 ## License
 
 See [LICENSE](LICENSE) file.
