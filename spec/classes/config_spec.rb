@@ -21,6 +21,27 @@ describe 'gor' do
       end
     end
 
+    context 'multiple values' do
+      let(:params) {{
+        :args => {
+          '-input-raw'          => ':80',
+          '-output-http'        => 'http://staging',
+          '-output-http-method' => [
+            'GET', 'HEAD', 'OPTIONS'
+          ],
+        },
+      }}
+
+      it 'should configure gor with the correct arguments' do
+        should contain_file(upstart_file).with_content(/^exec \/usr\/bin\/gor \\
+  -input-raw=':80' \\
+  -output-http='http:\/\/staging' \\
+  -output-http-method='GET' \\
+  -output-http-method='HEAD' \\
+  -output-http-method='OPTIONS'$/)
+      end
+    end
+
     context 'not a hash' do
       let(:params) {{
         :args => 'somestring',

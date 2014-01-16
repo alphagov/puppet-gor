@@ -18,6 +18,18 @@ class { 'gor':
 }
 ```
 
+The same argument can be specified multiple times by passing an array:
+```puppet
+class { 'gor':
+  args => {
+    …
+    '-output-http-method' => [
+      'GET', 'HEAD', 'OPTIONS'
+    ],
+  },
+}
+```
+
 To install a specific version of the Gor package:
 ```puppet
 class { 'gor':

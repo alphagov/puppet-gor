@@ -7,4 +7,10 @@ respawn
 respawn limit 5 20
 
 exec /usr/bin/gor \
-  <%= @args.map { |k,v| "#{k}='#{v}'" }.join(" \\\n  ") %>
+  <%=
+@args.map { |k,v|
+  [v].flatten.map { |i|
+    "#{k}='#{i}'"
+  }
+}.join(" \\\n  ")
+%>
