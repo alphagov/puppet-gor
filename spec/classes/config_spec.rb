@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe 'gor' do
-  let(:upstart_file) { '/etc/init/gor' }
+  let(:upstart_file) { '/etc/init/gor.conf' }
 
   describe '#args' do
     context 'valid hash, non-alphabetical order' do

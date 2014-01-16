@@ -5,7 +5,7 @@
 class gor::config {
   $args = $::gor::args
 
-  file { '/etc/init/gor':
+  file { '/etc/init/gor.conf':
     content => template('gor/etc/init/gor.conf.erb'),
   }
 }
