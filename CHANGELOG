@@ -1,2 +1,6 @@
+2014-01-16 Release 0.1.0
+- Expose `service_ensure` param.
+- Allow an argument to be called multiple times.
+
 2014-01-07 Release 0.0.1
 - Initial release.
