@@ -4,20 +4,20 @@ describe 'gor' do
   let(:upstart_file) { '/etc/init/gor' }
 
   describe '#args' do
-    context 'valid hash' do
+    context 'valid hash, non-alphabetical order' do
       let(:params) {{
         :args => {
-          '-input-raw'          => ':80',
           '-output-http-header' => 'User-Agent: gor',
           '-output-http'        => 'http://staging',
+          '-input-raw'          => ':80',
         },
       }}
 
       it 'should configure gor with the correct arguments' do
         should contain_file(upstart_file).with_content(/^exec \/usr\/bin\/gor \\
   -input-raw=':80' \\
-  -output-http-header='User-Agent: gor' \\
-  -output-http='http:\/\/staging'$/)
+  -output-http='http:\/\/staging' \\
+  -output-http-header='User-Agent: gor'$/)
       end
     end
 
