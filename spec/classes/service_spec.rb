@@ -9,8 +9,9 @@ describe 'gor' do
 
       it {
         should contain_service('gor').with(
-          :ensure => 'running',
-          :enable  => 'true'
+          :ensure     => 'running',
+          :enable     => 'true',
+          :hasrestart => 'false'
         )
       }
     end
@@ -23,8 +24,9 @@ describe 'gor' do
 
       it {
         should contain_service('gor').with(
-          :ensure => 'stopped',
-          :enable  => 'false'
+          :ensure     => 'stopped',
+          :enable     => 'false',
+          :hasrestart => 'false'
         )
       }
     end
