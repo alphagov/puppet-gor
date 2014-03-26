@@ -1,3 +1,6 @@
+2014-03-26 Release 0.2.0
+- Disable `hasrestart` to pick up argument changes.
+
 2014-01-16 Release 0.1.2
 - File extension for upstart config.
 
