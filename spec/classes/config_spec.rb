@@ -61,5 +61,21 @@ describe 'gor' do
         expect { should }.to raise_error(Puppet::Error, /args param is empty/)
       end
     end
+
+    context 'hash with empty values' do
+      let(:params) {{
+        :args => {
+          '-input-raw'          => ':80',
+          '-output-http'        => '',
+          '-output-http-method' => [
+            'GET', 'HEAD', 'OPTIONS'
+          ],
+        },
+      }}
+
+      it do
+        expect { should }.to raise_error(Puppet::Error, /args param is empty/)
+      end
+    end
   end
 end

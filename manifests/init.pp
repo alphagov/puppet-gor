@@ -21,7 +21,7 @@ class gor (
   $service_ensure = running,
 ) {
   validate_hash($args)
-  if empty($args) {
+  if empty($args) or empty(values($args)) {
     fail("${title}: args param is empty")
   }
 
