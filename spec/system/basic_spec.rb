@@ -7,9 +7,9 @@ describe 'basic tests' do
     EOS
 
     puppet_apply(pp) do |r|
-      r.exit_code.should == 2
+      expect(r.exit_code).to eq(2)
       r.refresh
-      r.exit_code.should be_zero
+      expect(r.exit_code).to be_zero
     end
   end
 end

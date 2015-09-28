@@ -14,7 +14,7 @@ describe 'gor' do
       }}
 
       it 'should configure gor with the correct arguments' do
-        should contain_file(upstart_file).with_content(/^exec \/usr\/bin\/gor \\
+        is_expected.to contain_file(upstart_file).with_content(/^exec \/usr\/bin\/gor \\
   -input-raw=':80' \\
   -output-http='http:\/\/staging' \\
   -output-http-header='User-Agent: gor'$/)
@@ -33,7 +33,7 @@ describe 'gor' do
       }}
 
       it 'should configure gor with the correct arguments' do
-        should contain_file(upstart_file).with_content(/^exec \/usr\/bin\/gor \\
+        is_expected.to contain_file(upstart_file).with_content(/^exec \/usr\/bin\/gor \\
   -input-raw=':80' \\
   -output-http='http:\/\/staging' \\
   -output-http-method='GET' \\
@@ -48,7 +48,7 @@ describe 'gor' do
       }}
 
       it do
-        expect { should }.to raise_error(Puppet::Error, /is not a Hash/)
+        is_expected.to raise_error(Puppet::Error, /is not a Hash/)
       end
     end
 
@@ -58,7 +58,7 @@ describe 'gor' do
       }}
 
       it do
-        expect { should }.to raise_error(Puppet::Error, /args param is empty/)
+        is_expected.to raise_error(Puppet::Error, /args param is empty/)
       end
     end
   end
