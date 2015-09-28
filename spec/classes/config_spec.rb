@@ -48,7 +48,7 @@ describe 'gor' do
       }}
 
       it do
-        expect { is_expected.to }.to raise_error(Puppet::Error, /is not a Hash/)
+        is_expected.to raise_error(Puppet::Error, /is not a Hash/)
       end
     end
 
@@ -58,7 +58,7 @@ describe 'gor' do
       }}
 
       it do
-        expect { is_expected.to }.to raise_error(Puppet::Error, /args param is empty/)
+        is_expected.to raise_error(Puppet::Error, /args param is empty/)
       end
     end
   end
