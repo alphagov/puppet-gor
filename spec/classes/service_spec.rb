@@ -8,7 +8,7 @@ describe 'gor' do
       }}
 
       it {
-        should contain_service('gor').with(
+        is_expected.to contain_service('gor').with(
           :ensure     => 'running',
           :enable     => 'true',
           :hasrestart => 'false'
@@ -23,7 +23,7 @@ describe 'gor' do
       }}
 
       it {
-        should contain_service('gor').with(
+        is_expected.to contain_service('gor').with(
           :ensure     => 'stopped',
           :enable     => 'false',
           :hasrestart => 'false'

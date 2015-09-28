@@ -7,7 +7,7 @@ describe 'gor' do
         :args => { '--foo' => 'bar' },
       }}
 
-      it { should contain_package('gor').with_ensure('present') }
+      it { is_expected.to contain_package('gor').with_ensure('present') }
     end
 
     context '1.2.3' do
@@ -16,7 +16,7 @@ describe 'gor' do
         :package_ensure => '1.2.3',
       }}
 
-      it { should contain_package('gor').with_ensure('1.2.3') }
+      it { is_expected.to contain_package('gor').with_ensure('1.2.3') }
     end
   end
 end
