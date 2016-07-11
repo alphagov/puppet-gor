@@ -10,7 +10,11 @@ exec /usr/bin/gor \
   <%=
 @args.sort.map { |k,v|
   [v].flatten.map { |i|
-    "#{k}='#{i}'"
+    if i == ''
+      "#{k}"
+    else
+      "#{k}='#{i}'"
+    end
   }
 }.join(" \\\n  ")
 %>

@@ -42,6 +42,23 @@ describe 'gor' do
       end
     end
 
+    context 'arguments without values' do
+      let(:params) {{
+        :args => {
+          '-input-raw'          => ':80',
+          '-output-http'        => 'http://staging',
+          '-http-original-host' => '',
+        },
+      }}
+
+      it 'should not include an equals when the argument has no value' do
+        is_expected.to contain_file(upstart_file).with_content(/^exec \/usr\/bin\/gor \\
+  -http-original-host \\
+  -input-raw=':80' \\
+  -output-http='http:\/\/staging'$/)
+      end
+    end
+
     context 'not a hash' do
       let(:params) {{
         :args => 'somestring',
