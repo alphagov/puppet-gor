@@ -1,0 +1,27 @@
+{
+  "name": "gdsoperations-gor",
+  "version": "0.3.0",
+  "author": "Government Digital Service",
+  "license": "MIT",
+  "summary": "Module to manage gor",
+  "source": "https://github.com/alphagov/puppet-gor",
+  "project_page": "https://github.com/alphagov/puppet-gor",
+  "issues_url": "https://github.com/alphagov/puppet-gor/issues",
+  "tags": [
+    "gor"
+  ],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [
+        "14.04"
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "name": "puppetlabs/stdlib",
+      "version_requirement": ">=3.0.0"
+    }
+  ]
+}
