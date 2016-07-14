@@ -6,7 +6,11 @@ stop on runlevel [!2345]
 respawn
 respawn limit 5 20
 
-exec /usr/bin/gor \
+<%  @envvars.each do |k, v| %>
+<%=   "env #{k}='#{v}'" -%>
+<%  end %>
+
+exec <%= @binary_path %> \
   <%=
 @args.sort.map { |k,v|
   [v].flatten.map { |i|
