@@ -79,4 +79,38 @@ describe 'gor' do
       end
     end
   end
+
+  describe '#envvars' do
+    context 'valid hash' do
+      let(:params) {{
+        :envvars => {
+          'GODEBUG' => 'netdns=go',
+          'FOO'     => 'bar',
+        },
+        :args => {
+          '-output-http-header' => 'User-Agent: gor',
+          '-output-http'        => 'http://staging',
+          '-input-raw'          => ':80',
+        },
+      }}
+
+      it 'should configure gor with correct environment variables in place' do
+        is_expected.to contain_file(upstart_file).with_content(/^env GODEBUG=\'netdns=go\'\nenv FOO=\'bar\'$/)
+      end
+    end
+    context 'empty hash' do
+      let(:params) {{
+        :envvars => {},
+        :args => {
+          '-output-http-header' => 'User-Agent: gor',
+          '-output-http'        => 'http://staging',
+          '-input-raw'          => ':80',
+        },
+      }}
+
+      it 'should configure gor without setting environment variables' do
+        is_expected.not_to contain_file(upstart_file).with_content(/^env GODEBUG=\'netdns=go\'\nenv FOO=\'bar\'$/)
+      end
+    end
+  end
 end

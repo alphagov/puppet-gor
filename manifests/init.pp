@@ -15,15 +15,26 @@
 #   Ensure parameter to pass to the service.
 #   Default: running
 #
+# [*envvars*]
+#   Environment variables to be passed into the upstart config. This could
+#   be used to turn on debugging options.
+#
+# [*binary_path*]
+#   Specify the location of the Gor binary.
+#
 class gor (
   $args,
   $package_ensure = present,
   $service_ensure = running,
+  $envvars = {},
+  $binary_path = '/usr/bin/gor',
 ) {
   validate_hash($args)
   if empty($args) {
     fail("${title}: args param is empty")
   }
+
+  validate_hash($envvars)
 
   anchor { 'gor::begin': } ->
   class { 'gor::package': } ->
