@@ -1,3 +1,7 @@
+2016-07-15 Release 0.3.1
+- Support ability to pass in environment variables
+- Support explicitly setting binary path 
+
 2016-07-12 Release 0.3.0
 - Support command-line options which don't have values
 - Support Puppet 3.8
