@@ -30,7 +30,7 @@ class gor (
   $binary_path = '/usr/bin/gor',
 ) {
   validate_hash($args)
-  if empty($args) {
+  if empty($args) or empty(values($args)) {
     fail("${title}: args param is empty")
   }
 
