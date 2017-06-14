@@ -36,11 +36,11 @@ class gor (
 
   validate_hash($envvars)
 
-  anchor { 'gor::begin': } ->
-  class { 'gor::package': } ->
-  class { 'gor::config': } ~>
-  class { 'gor::service': } ->
-  anchor { 'gor::end': }
+  anchor { 'gor::begin': }
+  -> class { 'gor::package': }
+  -> class { 'gor::config': }
+  ~> class { 'gor::service': }
+  -> anchor { 'gor::end': }
 
   Anchor['gor::begin']  ~> Class['gor::service']
   Class['gor::package'] ~> Class['gor::service']
