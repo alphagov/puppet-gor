@@ -1,23 +1,16 @@
 ---
 # Verify this with: http://lint.travis-ci.org/
 language: ruby
-# Force containerised builds
 sudo: false
 # Delete dependency locks for matrix builds.
 before_install: rm Gemfile.lock || true
 script: bundle exec rake test
 rvm:
   - 1.9.3
+  - 2.1.0
 env:
-  matrix:
-  - PUPPET_VERSION="~> 3.1.0"
-  - PUPPET_VERSION="~> 3.2.0"
-  - PUPPET_VERSION="~> 3.3.0"
-  - PUPPET_VERSION="~> 3.4.0"
-  - PUPPET_VERSION="~> 3.5.0"
-  - PUPPET_VERSION="~> 3.6.0"
-  - PUPPET_VERSION="~> 3.8.5"
-# Only notify for failed builds.
-notifications:
-  email:
-    on_success: never
+  - PUPPET_VERSION="~> 3.8.0"
+  - PUPPET_VERSION="~> 4.10.0"
+matrix:
+  allow_failures:
+  - env: PUPPET_VERSION="~> 4.10.0"
