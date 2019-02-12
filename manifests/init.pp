@@ -24,6 +24,7 @@
 #
 class gor (
   $args,
+  $package_name = 'gor',
   $package_ensure = present,
   $service_ensure = running,
   $envvars = {},
