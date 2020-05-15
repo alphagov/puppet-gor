@@ -1,0 +1,21 @@
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - run: sudo apt-get install rbenv ruby-build
+      - name: Ruby 1.9.3
+        run: |
+          rbenv install 1.9.3-p551
+          bundle exec rake test
+        env:
+          PUPPET_VERSION: "~3.8.0"
+      - name: Ruby 2.1.0
+        run: |
+          rbenv install 2.1.0
+          bundle exec rake test
+        env:
+          PUPPET_VERSION: "~3.8.0"
+
